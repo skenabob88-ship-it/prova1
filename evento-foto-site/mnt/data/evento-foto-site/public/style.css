@@ -1,0 +1,13 @@
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: linear-gradient(135deg, #f5f7fb, #dfe7ff); color: #172033; }
+.card { width: min(92vw, 560px); background: white; padding: 34px; border-radius: 28px; box-shadow: 0 20px 60px rgba(20,30,60,.16); text-align: center; }
+.badge { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #eef2ff; font-weight: 700; margin-bottom: 10px; }
+h1 { margin: 10px 0; font-size: clamp(2rem, 7vw, 3.1rem); line-height: 1; }
+.lead { font-size: 1.08rem; color: #4d5870; }
+.drop { margin: 22px 0 14px; display: block; border: 2px dashed #9aa8d4; border-radius: 20px; padding: 28px; cursor: pointer; background: #fbfcff; }
+.drop input { width: 100%; }
+.drop span { display: block; margin-top: 10px; font-weight: 700; }
+button, .button { display: inline-block; width: 100%; box-sizing: border-box; border: 0; border-radius: 16px; padding: 16px 18px; background: #243b8f; color: white; font-weight: 800; font-size: 1rem; cursor: pointer; text-decoration: none; }
+.status { min-height: 26px; margin-top: 16px; font-weight: 700; }
+.privacy { color: #65708a; font-size: .9rem; }
+.file-list { text-align: left; line-height: 1.9; word-break: break-word; }

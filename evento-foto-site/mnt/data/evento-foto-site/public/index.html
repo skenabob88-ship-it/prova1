@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carica le foto dell'evento</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="card">
+    <div class="badge">Evento</div>
+    <h1>Carica qui le tue foto</h1>
+    <p class="lead">Condividi foto e video dell'evento. Puoi selezionare più file insieme.</p>
+
+    <form id="uploadForm">
+      <label class="drop">
+        <input id="photos" name="photos" type="file" accept="image/*,video/*" multiple required>
+        <span>Seleziona foto o video</span>
+      </label>
+      <button type="submit">Carica file</button>
+    </form>
+
+    <div id="status" class="status"></div>
+    <p class="privacy">Caricando i file dichiari di volerli condividere con l'organizzatore dell'evento.</p>
+  </main>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const statusBox = document.getElementById('status');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const files = document.getElementById('photos').files;
+      if (!files.length) return;
+      const data = new FormData();
+      [...files].forEach(file => data.append('photos', file));
+      statusBox.textContent = 'Caricamento in corso...';
+      try {
+        const res = await fetch('/upload', { method: 'POST', body: data });
+        const json = await res.json();
+        if (!json.ok) throw new Error('Upload non riuscito');
+        statusBox.textContent = `Grazie! File caricati: ${json.count}`;
+        form.reset();
+      } catch (err) {
+        statusBox.textContent = 'Errore durante il caricamento. Riprova.';
+      }
+    });
+  </script>
+</body>
+</html>
